@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+        mybatis-config的标签是需要按照顺序定义的
+    -->
+    <plugins>
+        <plugin interceptor="com.duhc.mybatis.plugins.PageHelper">
+            <property name="dbType" value="mysql"/>
+        </plugin>
+    </plugins>
+
+    <environments default="devlopment">
+        <environment id="devlopment">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost/learnmybatis"/>
+                <property name="username" value="duhc"/>
+                <property name="password" value="11032320"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="UserMapper.xml"/>
+    </mappers>
+</configuration>
