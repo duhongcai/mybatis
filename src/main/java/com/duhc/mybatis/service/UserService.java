@@ -21,7 +21,7 @@ public class UserService {
             e.printStackTrace();
         }
     }
-    public static SqlSessionFactory getSession(){
+    public static SqlSessionFactory getSessionFactory(){
         return sqlSessionFactory;
     }
 }
