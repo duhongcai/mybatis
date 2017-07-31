@@ -3,7 +3,7 @@ package com.duhc.mybatis.entity;
 /**
  * Created by duhc on 2017/7/13.
  */
-public class UserInfo {
+public class UserInfo extends Pager{
     private long userId;
 private String userName;
 private int age;

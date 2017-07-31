@@ -6,4 +6,7 @@
     <select id="getUserInfo" resultType="com.duhc.mybatis.entity.UserInfo">
         SELECT * FROM userInfo WHERE userId = #{userId}
     </select>
+    <select id="selectPage" parameterType="com.duhc.mybatis.entity.UserInfo" resultType="com.duhc.mybatis.entity.UserInfo">
+        SELECT * FROM userInfo ORDER BY userId
+    </select>
 </mapper>

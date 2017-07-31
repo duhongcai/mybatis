@@ -1,10 +1,8 @@
 package com.duhc.mybatis.plugins;
 
 import com.duhc.mybatis.entity.Pager;
-import com.mysql.jdbc.Connection;
+import java.sql.*;
 import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.Statement;
-import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -12,8 +10,7 @@ import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
-import org.apache.ibatis.session.ResultHandler;
-import org.apache.ibatis.session.RowBounds;
+
 
 import java.sql.ResultSet;
 import java.util.Properties;
@@ -73,8 +70,11 @@ import java.util.Properties;
         @Signature(type = ResultSetHandler.class,method = "handleResultSets",args={java.sql.Statement.class})
 })
 public class PageHelper implements Interceptor {
+
     public Object intercept(Invocation invocation) throws Throwable {
+        // 获取被拦截到的statement对象 作为处理对象
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
+        //使用mybatis提供的
         MetaObject metaObject= SystemMetaObject.forObject(statementHandler);
         MappedStatement mappedStatement = (MappedStatement) metaObject.getValue("delegate.mappedStatement");
         String selectId = mappedStatement.getId();

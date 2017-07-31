@@ -25,8 +25,12 @@ public class Demo {
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession  = factory.openSession();
         UserDao userDao = sqlSession.getMapper(UserDao.class);
-        UserInfo userInfo = userDao.getUserInfo(1l);
-        System.out.println(userInfo.getAge());
+       // UserInfo userInfo = userDao.getUserInfo(1l);
+        UserInfo userInfo1 = new UserInfo();
+        userInfo1.setPagesize(1);
+        userInfo1.setPagebegin(1);
+        userDao.selectPage(userInfo1);
+        System.out.println(userInfo1.getAge());
     }
 
     public static void main(String[] args) throws IOException, SQLException {
