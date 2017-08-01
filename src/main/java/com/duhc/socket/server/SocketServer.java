@@ -43,7 +43,6 @@ class ReadHandlerThread implements Runnable {
 
     public void run() {
         DataInputStream dis = null;
-
             try {
                 while (true) {
                     InputStream inputStream = client.getInputStream();
