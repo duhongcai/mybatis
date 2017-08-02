@@ -1,6 +1,5 @@
 # study-java
-* mybatis
-learn something about mybatis
+* learn something about mybatis
 * ThriftRpc
 基于Thrift实现一个Rpc
 * socket
